@@ -1,0 +1,3 @@
+{:require [{{name}}.core]
+ :init-fns [{{name}}.core/init!]
+ :compiler-options {:asset-path "js/dev.out"}}
