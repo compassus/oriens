@@ -13,8 +13,10 @@ the following to run the application in development mode:
 
     boot dev
 
+Point your browser to localhost:3000 and start working on your new Compassus project.
 
-Build a single release artifact with the following command:
+
+To build a single release artifact, use the following command:
 
     boot release
 
