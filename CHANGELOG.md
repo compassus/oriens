@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
-## 0.1.0 (2016-06-12)
+### Changes
+
+- Generate reloadable code by default.
+
+## 0.1.0 (2016-08-02)
 
 - Initial version

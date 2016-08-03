@@ -6,7 +6,7 @@
             [pushy.core :as pushy]
             [{{name}}.parser :as parser]))
 
-(defui Home
+(defui ^:once Home
   static om/IQuery
   (query [this]
     [:app/title])
@@ -17,25 +17,34 @@
         (dom/h3 nil title)
         (dom/p nil "It works!")))))
 
-(def app-state
+(defonce app-state
   (atom {:app/title "Oriens"}))
 
-(def bidi-routes
+(defonce bidi-routes
   ["/" {""      :index
         "about" :about}])
 
 (declare app)
 
-(def history
+(defonce history
   (pushy/pushy #(c/set-route! app (:handler %))
     (partial bidi/match-route bidi-routes)))
 
-(def app
+(defonce app
   (c/application {:routes {:index (c/index-route Home)}
                   :reconciler-opts {:state app-state
                                     :parser (om/parser {:read parser/read})}
                   :history {:setup    #(pushy/start! history)
                             :teardown #(pushy/stop! history)}}))
 
+(defonce mounted? (atom false))
+
 (defn init! []
-  (c/mount! app (js/document.getElementById "app")))
+  (enable-console-print!)
+  (if-not @mounted?
+    (do
+      (c/mount! app (js/document.getElementById "app"))
+      (swap! mounted? not))
+    (let [route->component (-> app :config :route->component)
+          c (om/class->any (c/get-reconciler app) (get route->component (c/current-route app)))]
+      (.forceUpdate c))))
