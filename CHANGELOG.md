@@ -1,8 +1,8 @@
 # Changelog
 
-## master (unreleased)
+## [master (unreleased)](https://github.com/compassus/oriens/compare/0.1.1...HEAD)
 
-## 0.1.1 (2016-08-03)
+## [0.1.1 (2016-08-03)](https://github.com/compassus/oriens/compare/0.1.0...0.1.1)
 
 ### Changes
 
