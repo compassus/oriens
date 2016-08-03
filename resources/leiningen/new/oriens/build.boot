@@ -14,6 +14,7 @@
                  [adzerk/boot-reload          "0.4.12"         :scope "test"]
                  [crisptrutski/boot-cljs-test "0.2.2-SNAPSHOT" :scope "test"]
                  [deraen/boot-less            "0.5.0"          :scope "test"]
+                 [org.slf4j/slf4j-nop         "1.7.21"         :scope "test"]
                  [org.clojure/tools.nrepl     "0.2.12"         :scope "test"]
                  [pandeiro/boot-http          "0.7.3"          :scope "test"]
                  [weasel                      "0.7.0"          :scope "test"]])
