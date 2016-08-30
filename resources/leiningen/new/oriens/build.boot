@@ -1,7 +1,7 @@
 (set-env!
  :source-paths    #{"src/main"}
  :resource-paths  #{"resources"}
- :dependencies '[[org.clojure/clojurescript   "1.9.216"]
+ :dependencies '[[org.clojure/clojurescript   "1.9.227"]
                  [org.omcljs/om               "1.0.0-alpha41"]
                  [compassus                   "0.2.1"]
                  [bidi                        "2.0.9"]
