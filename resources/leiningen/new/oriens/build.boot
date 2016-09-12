@@ -1,10 +1,11 @@
 (set-env!
  :source-paths    #{"src/main"}
  :resource-paths  #{"resources"}
- :dependencies '[[org.clojure/clojurescript   "1.9.227"]
-                 [org.omcljs/om               "1.0.0-alpha41"]
+ :dependencies '[[org.clojure/clojure         "1.9.0-alpha12"]
+                 [org.clojure/clojurescript   "1.9.229"]
+                 [org.omcljs/om               "1.0.0-alpha44"]
                  [compassus                   "0.2.1"]
-                 [bidi                        "2.0.9"]
+                 [bidi                        "2.0.10"]
                  [kibu/pushy                  "0.3.6"]
 
                  [com.cognitect/transit-clj   "0.8.288"        :scope "test"]
