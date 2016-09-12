@@ -1,4 +1,4 @@
-(defproject oriens/lein-template "0.1.2"
+(defproject oriens/lein-template "0.1.3"
   :description "A Boot/Leiningen template for Compassus, an Om Next routing library."
   :url "http://github.com/anmonteiro/oriens"
   :license {:name "Eclipse Public License"
