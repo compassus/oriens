@@ -21,21 +21,28 @@
   (atom {:app/title "Oriens"}))
 
 (defonce bidi-routes
-  ["/" {""      :index
-        "about" :about}])
+  ["/" {"" :index}])
 
 (declare app)
 
+(defn update-route!
+  [{:keys [handler] :as route}]
+  (let [current-route (c/current-route app)]
+    (when (not= handler current-route)
+      (c/set-route! app handler))))
+
 (defonce history
-  (pushy/pushy #(c/set-route! app (:handler %))
+  (pushy/pushy update-route!
     (partial bidi/match-route bidi-routes)))
 
 (defonce app
-  (c/application {:routes {:index (c/index-route Home)}
-                  :reconciler-opts {:state app-state
-                                    :parser (om/parser {:read parser/read})}
-                  :history {:setup    #(pushy/start! history)
-                            :teardown #(pushy/stop! history)}}))
+  (c/application {:routes {:index Home}
+                  :index-route :index
+                  :reconciler (om/reconciler
+                                {:state app-state
+                                 :parser (c/parser {:read parser/read})})
+                  :mixins [(c/did-mount (fn [_] (pushy/start! history)))
+                           (c/will-unmount (fn [_] (pushy/stop! history)))]}))
 
 (defonce mounted? (atom false))
 
